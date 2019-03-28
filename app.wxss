@@ -1,0 +1,5 @@
+/**app.wxss**/
+/* 重置button样式 */
+button::after{
+  border: none;
+}

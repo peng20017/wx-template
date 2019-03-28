@@ -1,0 +1,5 @@
+<!--index.wxml-->
+<button bindtap='navigateTo'>navigator</button>
+<button bindtap='copy'>copy</button>
+<button open-type="getUserInfo" bindgetuserinfo="getUserInfo">login</button>
+<alert-login showLogin="{{showLogin}}" bind:afterLogin="afterLogin"/>

@@ -1,0 +1,14 @@
+<view class='login_warp' wx:if="{{showLogin}}">
+  <view class='login_content'>
+    <view class='login_tip'>
+      <text>提示</text>
+    </view>
+    <view class='login_msg'>
+      <text>需要授权登录，才能获得更多信息</text>
+    </view>
+    <view class='login_btn'>
+      <button bindtap='hideLogin'>取消</button>
+      <button open-type="getUserInfo" bindgetuserinfo="getuserinfo">登录</button>
+    </view>
+  </view>
+</view>
