@@ -1,12 +1,21 @@
 //app.js
 App({
-  onLaunch: function () {
+  onLaunch: function() {
+    this.setSystemInfo();
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    systemInfo: null
   },
-  login(t){
-    // 登录
+  login(t) {
     t.success();
+  },
+  setSystemInfo() {
+    let _t = this;
+    wx.getSystemInfo({
+      success: res => {
+        _t.systemInfo = res;
+      }
+    })
   }
 })

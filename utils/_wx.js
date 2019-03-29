@@ -1,8 +1,5 @@
 const _config = require("./config.js");
 let _wx = {
-  requestFailText: '你的网络开小差了哦~',
-  navigate: !0,
-  navigateInterval: 200,
   request(t) {
     let _t = this;
     // t.url = `${_config.host}/${t.url}`,
@@ -28,7 +25,7 @@ let _wx = {
         },
         fail: res => {
           this.showModal({
-            content: _t.requestFailText
+            content: '你的网络开小差了哦'
           });
           if (t.fail) t.fail(res);
           console.log(`%c${JSON.stringify(res)}`, 'color:yellow');
@@ -88,38 +85,41 @@ let _wx = {
       }, t))
     })
   },
-  navigateTo(t) {
-    let _t = this;
-    return new Promise((resolve, reject) => {
-      if (_t.navigate) {
-        _t.navigate = !1;
-        wx.navigateTo({
-          url: t.url,
-          success: res => {
-            setTimeout(() => {
-              _t.navigate = !0;
-            }, _t.navigateInterval)
-            if (t.success) t.success();
-            return resolve(res);
-          },
-          fail: res => {
-            if (t.fail) t.fail();
-            return reject(res);
-          },
-          complete: function(res) {
-            setTimeout(() => {
-              if (!_t.navigate) _t.navigate = !0;
-            }, 2000)
-          },
-        })
-      } else {
-        console.log("%c点击太快了，还不能navigate", "color:yellow");
-        return reject({
-          msg: 'tap too fast'
-        });
-      }
-
-    })
+  navigateTo:{
+    navigate: !0,
+    navigateInterval: 200,
+    jump(t) {
+      let _t = this;
+      return new Promise((resolve, reject) => {
+        if (_t.navigate) {
+          _t.navigate = !1;
+          wx.navigateTo({
+            url: t.url,
+            success: res => {
+              setTimeout(() => {
+                _t.navigate = !0;
+              }, _t.navigateInterval)
+              if (t.success) t.success();
+              return resolve(res);
+            },
+            fail: res => {
+              if (t.fail) t.fail();
+              return reject(res);
+            },
+            complete: function (res) {
+              setTimeout(() => {
+                if (!_t.navigate) _t.navigate = !0;
+              }, 2000)
+            },
+          })
+        } else {
+          console.log("%c点击太快了，还不能跳转", "color:yellow");
+          return reject({
+            msg: 'tap too fast'
+          });
+        }
+      })
+    }
   },
   setClipboardData(t) {
     let _t = this;
@@ -130,9 +130,6 @@ let _wx = {
       wx.setClipboardData({
         data: t.data,
         success: res => {
-          _t.showTip({
-            title: '复制成功'
-          })
           if (t.success) t.success;
           return resolve(res);
         },
@@ -151,7 +148,6 @@ let _wx = {
           if (res.authSetting['scope.userInfo']) {
             wx.getUserInfo({
               success: res => {
-                console.log(res);
                 if (t.success) t.success(res);
                 return resolve(Object.assign({
                   status: 1
@@ -183,7 +179,7 @@ let _wx = {
       data: "obj=>{title: '提示','icon': 'success','duration': '1500','mask': true,success,fail}返回promise对象",
     },
     {
-      apiname: 'navigateTo',
+      apiname: 'navigateTo.jump',
       data: "obj=>{url:'',success,fail}返回promise对象"
     }, {
       apiname: 'setClipboardData',

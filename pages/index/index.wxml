@@ -1,5 +1,8 @@
 <!--index.wxml-->
-<button bindtap='navigateTo'>navigator</button>
-<button bindtap='copy'>copy</button>
-<button open-type="getUserInfo" bindgetuserinfo="getUserInfo">login</button>
-<alert-login showLogin="{{showLogin}}" bind:afterLogin="afterLogin"/>
+<navigation-bar navbarData="{{navbarData}}" />
+<alert-login showLogin="{{showLogin}}" bind:afterLogin="afterLogin" />
+<view class='container'>
+  <view bindtap="login">alert-login</view>
+  <view bindtap='navigateTo' data-url="/pages/logs/logs">navigateTo</view>
+  <view bindtap='copy' data-str="111111">copy</view>
+</view>

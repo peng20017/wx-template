@@ -1,5 +1,5 @@
 # wx-template
-# »ùÓÚÎ¢ÐÅÔ­ÉúAPI¿ª·¢
-### µÇÂ¼×é¼þlogin
-### Î¢ÐÅAPI·â×°£¬Í¬Ê±Ö§³Öes6·µ»ØPromise¶ÔÏóºÍsuccess¡¢failº¯Êýµ÷ÓÃ
-### ÊµÏÖÁËÒ³ÃæÉúÃüÖÜÆÚµÄ·â×°µ÷ÓÃºÍ²ÎÊý´«µÝ
+# åŸºäºŽå¾®ä¿¡åŽŸç”ŸAPIå¼€å‘
+### ç™»å½•ç»„ä»¶login
+### å¾®ä¿¡APIå°è£…ï¼ŒåŒæ—¶æ”¯æŒes6è¿”å›žPromiseå¯¹è±¡å’Œsuccessã€failå‡½æ•°è°ƒç”¨
+### å®žçŽ°äº†é¡µé¢ç”Ÿå‘½å‘¨æœŸçš„å°è£…è°ƒç”¨å’Œå‚æ•°ä¼ é€’

@@ -6,10 +6,17 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
   },
   "usingComponents": {
-    "alert-login": "/components/login/login"
+    "alert-login": "/components/login/login",
+    "navigation-bar": "/components/navigation-bar/navigation-bar"
+  },
+  "networkTimeout": {
+    "request": 15000,
+    "connectSocket": 15000,
+    "uploadFile": 15000,
+    "downloadFile": 15000
   }
 }

@@ -20,7 +20,7 @@ Component({
       this.setData({
         showLogin:!1
       })
-      _wx.navigateTo({
+      _wx.navigateTo.jump({
         url: '/pages/logs/logs'
       })
     },
