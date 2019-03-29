@@ -8,14 +8,14 @@ App({
     systemInfo: null
   },
   login(t) {
-    t.success(res);
+    t.success();
     // t.fail(res)
   },
   setSystemInfo() {
     let _t = this;
     wx.getSystemInfo({
       success: res => {
-        _t.systemInfo = res;
+        _t.globalData.systemInfo = res;
       }
     })
   }

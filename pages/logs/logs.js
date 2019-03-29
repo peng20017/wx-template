@@ -8,7 +8,7 @@ a.data.navbarData = {
   title: "logs",
   capsule: {
     showBack: !0,
-    showHome: !1,
+    showHome: !0,
     capsuleColor: "yellow"
   },
   backgroundColor: 'pink',

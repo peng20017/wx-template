@@ -4,21 +4,27 @@ Component({
     navbarData: {
       type: Object,
       value: {},
-      observer: function (newVal, oldVal) { }
+      observer: function(newVal, oldVal) {}
     }
   },
   data: {
     height: '',
   },
-  attached: function () {
-    let _this = this;
-    wx.getSystemInfo({
-      success: (res) => {
-        _this.setData({
-          height: res.statusBarHeight,
-        })
-      }
-    })
+  attached: function() {
+    let _t = this;
+    if (app.globalData.systemInfo.statusBarHeight) {
+      _t.setData({
+        height: app.globalData.systemInfo.statusBarHeight
+      })
+    } else {
+      wx.getSystemInfo({
+        success: (res) => {
+          _t.setData({
+            height: res.statusBarHeight,
+          })
+        }
+      })
+    }
   },
   methods: {
     _navback() {

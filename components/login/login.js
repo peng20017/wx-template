@@ -15,7 +15,7 @@ Component({
 
   },
   methods: {
-    cancelLogin(){
+    _cancel(){
       // 取消登陆
       this.setData({
         showLogin:!1
@@ -24,7 +24,7 @@ Component({
         url: '/pages/logs/logs'
       })
     },
-    getuserinfo(e){
+    _confirm(e){
       console.log(e)
       if (e.detail.userInfo){
         console.log('登录成功')
