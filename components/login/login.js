@@ -15,7 +15,7 @@ Component({
 
   },
   methods: {
-    hideLogin(){
+    cancelLogin(){
       // 取消登陆
       this.setData({
         showLogin:!1
@@ -28,15 +28,7 @@ Component({
       console.log(e)
       if (e.detail.userInfo){
         console.log('登录成功')
-        app.login({
-          success:res=>{
-            console.log('app.login.success')
-            this.setData({
-              showLogin:!1
-            })
-            this.triggerEvent('afterLogin');
-          }
-        });
+        this.triggerEvent('beforeLogin');
       }else{
         console.log('登录失败')
         _wx.navigateTo({

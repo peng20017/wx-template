@@ -11,12 +11,12 @@
                 <text>{{navbarData.title}}</text>
             </view>
             <view style='display: flex; justify-content: space-around;flex-direction: column'>
-                <view class='nav-capsule' style='height: 40px;' wx:if='{{navbarData.capsule.showCapsule}}'>
-                    <view bindtap='_navback'>
+                <view class='nav-capsule' style='height: 40px;' >
+                    <view bindtap='_navback' wx:if='{{navbarData.capsule.showBack}}'>
                         <!-- <image src='../image/back.png' mode='aspectFill' class='back-pre'></image> -->
                         <icon class='iconfont icon-fanhui' style='color:{{navbarData.capsule.capsuleColor}}'></icon>
                     </view>
-                    <view bindtap='_backhome'>
+                    <view bindtap='_backhome' wx:if='{{navbarData.capsule.showHome}}'>
                         <!-- <image src='../image/back-home.png' mode='aspectFill' class='back-home'></image> -->
                         <icon class='iconfont icon-home' style='color:{{navbarData.capsule.capsuleColor}}'></icon>
                     </view>

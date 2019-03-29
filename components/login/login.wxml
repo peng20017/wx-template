@@ -7,7 +7,7 @@
       <text>需要授权登录，才能获得更多信息</text>
     </view>
     <view class='login_btn'>
-      <button bindtap='hideLogin'>取消</button>
+      <button bindtap='cancelLogin'>取消</button>
       <button open-type="getUserInfo" bindgetuserinfo="getuserinfo">登录</button>
     </view>
   </view>

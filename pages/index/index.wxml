@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <navigation-bar navbarData="{{navbarData}}" />
-<alert-login showLogin="{{showLogin}}" bind:afterLogin="afterLogin" />
+<alert-login showLogin="{{showLogin}}" bind:beforeLogin="beforeLogin" />
 <view class='container'>
   <view bindtap="login">alert-login</view>
   <view bindtap='navigateTo' data-url="/pages/logs/logs">navigateTo</view>

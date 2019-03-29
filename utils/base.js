@@ -1,17 +1,10 @@
-let {
-  navigateTo,
-  setClipboardData,
-  showTip
-} = require("./_wx.js");
+let { navigateTo,setClipboardData,showTip } = require("./_wx.js");
 module.exports = function(n) {
   this.navigate = !0
   this.navigateInterval = 200
   this.data = {
     showLogin: !1,
-    navbarData: {
-      page: n.page,
-      showBack: false,
-    }
+    navbarData:null
   }
   this.onLoad = (e) => {}
   this.onShow = (e) => {}

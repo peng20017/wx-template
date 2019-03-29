@@ -192,6 +192,6 @@ let _wx = {
   ],
 }
 _wx.canUseList.forEach((currentValue) => {
-  console.log("%c_wx.js：" + currentValue['apiname'] + "参数" + currentValue['data'], "color:skyblue");
+  console.log("%c_wx.js： " + currentValue['apiname'] + "参数" + currentValue['data'], "color:skyblue");
 })
 module.exports = _wx;

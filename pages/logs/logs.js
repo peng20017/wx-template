@@ -7,7 +7,8 @@ a.data.navbarData = {
   page: "logs",
   title: "logs",
   capsule: {
-    showCapsule: !0,
+    showBack: !0,
+    showHome: !1,
     capsuleColor: "yellow"
   },
   backgroundColor: 'pink',

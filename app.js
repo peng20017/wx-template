@@ -8,7 +8,8 @@ App({
     systemInfo: null
   },
   login(t) {
-    t.success();
+    t.success(res);
+    // t.fail(res)
   },
   setSystemInfo() {
     let _t = this;
