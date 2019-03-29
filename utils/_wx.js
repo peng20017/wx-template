@@ -75,11 +75,11 @@ let _wx = {
         duration: t.duration,
         mask: true,
         success: res => {
-          if (t.success) t.success();
+          if (t.success) t.success(res);
           return resolve(res);
         },
         fail: res => {
-          if (t.fail) t.fail();
+          if (t.fail) t.fail(res);
           return reject(res);
         }
       }, t))
@@ -99,11 +99,11 @@ let _wx = {
               setTimeout(() => {
                 _t.navigate = !0;
               }, _t.navigateInterval)
-              if (t.success) t.success();
+              if (t.success) t.success(res);
               return resolve(res);
             },
             fail: res => {
-              if (t.fail) t.fail();
+              if (t.fail) t.fail(res);
               return reject(res);
             },
             complete: function (res) {
@@ -122,6 +122,7 @@ let _wx = {
     }
   },
   setClipboardData(t) {
+    console.log(t)
     let _t = this;
     t = Object.assign({
       data: ''
@@ -130,7 +131,7 @@ let _wx = {
       wx.setClipboardData({
         data: t.data,
         success: res => {
-          if (t.success) t.success;
+          if (t.success) t.success(res);
           return resolve(res);
         },
         fail: res => {

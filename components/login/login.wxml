@@ -1,5 +1,5 @@
 <view class='login_warp' wx:if="{{showLogin}}">
-  <view class='login_content'>
+  <view class='login_content bounceIn'>
     <view class='login_tip'>
       <text>提示</text>
     </view>
