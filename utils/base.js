@@ -1,4 +1,9 @@
-import { navigateTo,setClipboardData,showTip,getUserInfo } from "./_wx.js";
+import {
+  navigateTo,
+  setClipboardData,
+  showTip,
+  getUserInfo
+} from "./_wx.js";
 module.exports = function(n) {
   this.data = {
     showLogin: !1,
@@ -8,13 +13,14 @@ module.exports = function(n) {
     currentPage: ''
   }
   this.onLoad = function(e) {
-    this.checkLogin();
-    if (JSON.stringify(e) !== '{}'){
+    if (JSON.stringify(e) !== '{}') {
       this.setData({
         options: e
       })
     }
     if (this.afterOnload) this.afterOnload(e);
+    if (n.page == 'error') return;
+    this.checkLogin();
   }
   // this.onShow = function(e){}
   // this.onReady = function(e) {}
@@ -22,28 +28,30 @@ module.exports = function(n) {
     this.setData({
       currentPage: this.route
     })
-    getUserInfo()
-      .then(res => {
-        if (res.status == 0) {
-          this.setData({
-            showLogin: !0
-          })
-        } else if (res.status == 1) {
-          console.log(res)
-          this.setData({
-            showPage: !0,
-          })
-          if (getApp().globalData.userInfo == null){
-            getApp().globalData.userInfo = res.userInfo
+    if (wx.getStorageSync('session_id')) {
+      this.dataLoad()
+    } else {
+      getUserInfo()
+        .then(res => {
+          if (res.status == 0) {
+            this.setData({
+              showLogin: !0
+            })
+          } else if (res.status == 1) {
+            this.setData({
+              showPage: !0,
+            })
+            if (getApp().globalData.userInfo == null) {
+              getApp().globalData.userInfo = res.userInfo
+            }
+            console.log("用户已经授权", 'session_id:' + wx.getStorageSync('session_id'))
+            if (this.dataLoad) {
+              this.dataLoad();
+            }
           }
-          console.log(getApp())
-          console.log("用户已经授权")
-          if (this.dataLoad) {
-            this.dataLoad();
-          }
-        }
-      })
-  } 
+        })
+    }
+  }
   this.navigateTo = function(e) {
     if (e.currentTarget.dataset.url) {
       navigateTo.jump({

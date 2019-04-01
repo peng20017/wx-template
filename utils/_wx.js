@@ -92,7 +92,7 @@ let _wx = {
       }, t))
     })
   },
-  navigateTo:{
+  navigateTo: {
     navigate: !0,
     navigateInterval: 200,
     jump(t) {
@@ -113,7 +113,7 @@ let _wx = {
               if (t.fail) t.fail(res);
               return reject(res);
             },
-            complete: function (res) {
+            complete: function(res) {
               setTimeout(() => {
                 if (!_t.navigate) _t.navigate = !0;
               }, 2000)
@@ -149,17 +149,26 @@ let _wx = {
     })
   },
   getUserInfo(t) {
-    t = Object.assign({},t);
+    t = Object.assign({}, t);
     return new Promise((resolve, reject) => {
       wx.getSetting({
         success: res => {
           if (res.authSetting['scope.userInfo']) {
             wx.getUserInfo({
               success: res => {
-                if (t.success) t.success(res);
-                return resolve(Object.assign({
-                  status: 1
-                }, res));
+                if (wx.getStorageSync("session_id")) {
+                  res = Object.assign({
+                    status: 1
+                  }, res);
+                  if (t.success) t.success(res);
+                } else {
+                  res = Object.assign({
+                    status: 0,
+                    msg: '本地没有session_id缓存'
+                  }, res);
+                  console.log("%c本地没有session_id缓存", "color:yellow")
+                }
+                return resolve(res);
               }
             })
           } else {
@@ -168,13 +177,12 @@ let _wx = {
               msg: '用户还没有授权登录'
             };
             if (t.fail) t.fail(s);
-            console.log("%c还没有授权登录", "color:yellow")
+            console.log("%c用户还没有授权登录", "color:yellow")
             return resolve(s);
           }
         }
       })
     })
-
   },
   canUseList: [{
       apiname: 'request',

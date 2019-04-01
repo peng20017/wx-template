@@ -5,7 +5,7 @@
             <text class='left_title' style='line-height:40px;'>{{navbarData.title}}</text>
         </view>
     </block> -->
-    <block wx:if="{{navbarData.type==1}}">
+    <block>
         <view class='nav-content'>
             <view class='nav-title'>
                 <text catchtap="{{navbarData.event}}" data-src="{{navbarData.src}}">{{navbarData.title}}</text>

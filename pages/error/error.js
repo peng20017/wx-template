@@ -1,17 +1,16 @@
 //logs.js 
 let _wx = require("../../utils/_wx.js"),
-  a = new(require("../../utils/base.js"))({
+  thisPage = new(require("../../utils/base.js"))({
     page: 'error'
   })
-a.data.navbarData = {
-  type: 1,
+thisPage.data.navbarData = {
   title: "授权登录",
   capsule: {
     showBack: !0,
     showHome: !0,
-    capsuleColor: "yellow"
+    capsuleColor: "#12435f"
   },
   backgroundColor: 'pink',
   textColor: '#000',
-},
-Page(a);
+}
+Page(thisPage);

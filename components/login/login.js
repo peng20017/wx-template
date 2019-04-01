@@ -23,12 +23,13 @@ Component({
   methods: {
     _cancel() {
       console.log(this.data.currentPage)
-      this.setData({
-        showLogin: !1
-      })
       if (this.data.currentPage != _config.errorPage) {
         navigateTo.jump({
           url: '/' + _config.errorPage
+        })
+      }else{
+        this.setData({
+          showLogin:!1
         })
       }
     },
