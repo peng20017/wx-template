@@ -29,7 +29,10 @@ module.exports = function(n) {
       currentPage: this.route
     })
     if (wx.getStorageSync('session_id')) {
-      this.dataLoad()
+      this.setData({
+        showPage: !0,
+      })
+      this.dataLoad();
     } else {
       getUserInfo()
         .then(res => {
