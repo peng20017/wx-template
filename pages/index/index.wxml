@@ -3,6 +3,6 @@
 <alert-login showLogin="{{showLogin}}" bind:beforeLogin="beforeLogin" currentPage="{{currentPage}}"/>
 <view class='container' hidden='{{!showPage}}'>
   <view bindtap="login">alert-login</view>
-  <view bindtap='navigateTo' data-url="/pages/logs/logs">navigateTo</view>
+  <view bindtap='navigateTo' data-url="/pages/error/error">navigateTo</view>
   <view bindtap='copy' data-str="111111">copy</view>
 </view>

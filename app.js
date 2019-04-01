@@ -9,6 +9,7 @@ App({
     systemInfo: null
   },
   login(t) {
+    // userInfo 复制
     t.success();
     // t.fail(res)
   },

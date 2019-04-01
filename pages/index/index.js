@@ -11,8 +11,6 @@ a.data.navbarData = {
   event:'_navigateTo',
   src:'/pages/error/error'
 }
-a.onLoad = function(e) {
-}
 a.login = function(e) {
   this.setData({
     showLogin: !0
@@ -20,7 +18,7 @@ a.login = function(e) {
 }
 a.dataLoad = function(e){//数据加载
   console.log("dataLoad");
+  console.log(getApp())
 }
-
 Page(a);
 

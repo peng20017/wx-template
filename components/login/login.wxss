@@ -94,3 +94,6 @@
     -webkit-animation-name: bounceIn;
     animation-name: bounceIn;
 }
+.btn-hover{
+  background-color: #eeeeee!important;
+}

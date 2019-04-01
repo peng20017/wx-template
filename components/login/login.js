@@ -35,6 +35,7 @@ Component({
     _confirm(e) {
       if (e.detail.userInfo) {
         console.log('获取用户信息成功')
+        app.globalData.userInfo = e.detail.userInfo;
         this.triggerEvent('beforeLogin');
       } else {
         console.log('获取用户信息失败')
