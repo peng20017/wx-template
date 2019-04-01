@@ -24,9 +24,16 @@ let _wx = {
           }
         },
         fail: res => {
-          this.showModal({
-            content: '你的网络开小差了哦'
-          });
+          wx.showModal({
+            title: '提示',
+            content: '你的网络开小差了',
+            showCancel: false,
+            confirmText: '我知道了',
+            confirmColor: "#DC143C",
+            success: function(res) {},
+            fail: function(res) {},
+            complete: function(res) {},
+          })
           if (t.fail) t.fail(res);
           console.log(`%c${JSON.stringify(res)}`, 'color:yellow');
           return reject(res);

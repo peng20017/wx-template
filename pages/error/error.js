@@ -1,11 +1,11 @@
 //logs.js 
 let _wx = require("../../utils/_wx.js"),
   a = new(require("../../utils/base.js"))({
-    page: 'logs'
+    page: 'error'
   })
 a.data.navbarData = {
-  page: "logs",
-  title: "logs",
+  type: 1,
+  title: "授权登录",
   capsule: {
     showBack: !0,
     showHome: !0,

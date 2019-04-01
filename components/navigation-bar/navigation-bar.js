@@ -1,4 +1,5 @@
-const app = getApp()
+const app = getApp();
+import { navigateTo } from "../../utils/_wx.js";
 Component({
   properties: {
     navbarData: {
@@ -31,7 +32,14 @@ Component({
       wx.navigateBack()
     },
     _backhome() {
-      wx.navigateBack()
+      wx.reLaunch({
+        url: '/pages/index/index',
+      })
+    },
+    _navigateTo(e){
+      navigateTo.jump({
+        url: e.currentTarget.dataset.src
+      })
     }
   }
 })

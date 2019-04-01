@@ -1,39 +1,48 @@
 const app = getApp();
-import _wx from "../../utils/_wx.js";
+import _config from '../../utils/config.js';
+import { navigateTo } from "../../utils/_wx.js";
 Component({
   properties: {
     showLogin: {
       type: Boolean,
       value: !1,
-      observer(newVal, oldVal, changedPath) {}
+      observer(newVal, oldVal, changedPath) { }
+    },
+    currentPage: {
+      type: String,
+      value: '',
+      observer(newVal, oldVal, changedPath) { }
     }
   },
   data: {
     height: '',
   },
-  attached: function() {
+  attached: function () {
 
   },
   methods: {
-    _cancel(){
-      // 取消登陆
+    _cancel() {
+      console.log(this.data.currentPage)
       this.setData({
-        showLogin:!1
+        showLogin: !1
       })
-      _wx.navigateTo.jump({
-        url: '/pages/logs/logs'
-      })
-    },
-    _confirm(e){
-      console.log(e)
-      if (e.detail.userInfo){
-        console.log('登录成功')
-        this.triggerEvent('beforeLogin');
-      }else{
-        console.log('登录失败')
-        _wx.navigateTo({
-          url:'/pages/logs/logs'
+      if (this.data.currentPage != _config.errorPage) {
+        navigateTo.jump({
+          url: '/' + _config.errorPage
         })
+      }
+    },
+    _confirm(e) {
+      if (e.detail.userInfo) {
+        console.log('获取用户信息成功')
+        this.triggerEvent('beforeLogin');
+      } else {
+        console.log('获取用户信息失败')
+        if (this.data.currentPage != _config.errorPage) {
+          navigateTo.jump({
+            url: '/' + _config.errorPage
+          })
+        }
       }
     }
   }

@@ -1,0 +1,6 @@
+<!--logs.wxml-->
+<navigation-bar navbarData="{{navbarData}}" />
+<alert-login showLogin="{{showLogin}}" bind:beforeLogin="beforeLogin" currentPage="{{currentPage}}"/>
+<view class="container log-list">
+  授权失败，小程序需要您的授权才能使用
+</view>

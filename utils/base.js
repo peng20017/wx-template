@@ -1,34 +1,75 @@
-let { navigateTo,setClipboardData,showTip } = require("./_wx.js");
+import { navigateTo,setClipboardData,showTip,getUserInfo } from "./_wx.js";
 module.exports = function(n) {
-  this.navigate = !0
-  this.navigateInterval = 200
   this.data = {
     showLogin: !1,
-    navbarData:null
+    showPage: !1,
+    navbarData: null,
+    userInfo:null,
+    currentPage:''
   }
-  this.onLoad = (e) => {}
-  this.onShow = (e) => {}
-  this.navigateTo = (e) => {
-      if (e.currentTarget.dataset.url) {
-        navigateTo.jump({
-          url: e.currentTarget.dataset.url
+  // this.onLoad = function(e){}
+  // this.onShow = function(e){}
+  this.onReady = function(e){
+    console.log(this.route)
+    this.setData({
+      currentPage: this.route
+    })
+    getUserInfo()
+    .then(res=>{
+      if(res.status == 0){
+        this.setData({
+          showLogin:!0
         })
-      } else {
-        console.log("%c缺少路由data-url参数", "color:yellow");
-      }
-    },
-    this.copy = (e) => {
-      if (e.currentTarget.dataset.str) {
-        setClipboardData({
-          data: e.currentTarget.dataset.str,
-          success: res => {
-            showTip({
-              title: '复制成功'
-            })
-          }
+      }else if(res.status ==1){
+        this.setData({
+          showPage:!0
         })
-      } else {
-        console.log("%c缺少copy data-str参数", "color:yellow");
+        console.log("用户已经授权")
+        if (this.dataLoad){
+          this.dataLoad();
+        }
       }
+    })
+  }
+  this.navigateTo = function(e){
+    if (e.currentTarget.dataset.url) {
+      navigateTo.jump({
+        url: e.currentTarget.dataset.url
+      })
+    } else {
+      console.log("%c缺少路由data-url参数", "color:yellow");
     }
+  }
+  this.copy = function(e){
+    if (e.currentTarget.dataset.str) {
+      setClipboardData({
+        data: e.currentTarget.dataset.str,
+        success: res => {
+          showTip({
+            title: '复制成功'
+          })
+        }
+      })
+    } else {
+      console.log("%c缺少copy data-str参数", "color:yellow");
+    }
+  }
+  this.beforeLogin = function(e){
+    console.log('beforeLogin');
+    getApp().login({
+      success: res => {
+        this.setData({
+          showLogin:!1,
+          showPage: !0
+        })
+        console.log("afterLogin Success")
+        if (this.dataLoad){
+          this.dataLoad();
+        }
+      },
+      fail: res => {
+        console.log("Login Fail")
+      }
+    })
+  }
 };

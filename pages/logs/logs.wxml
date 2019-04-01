@@ -1,6 +1,0 @@
-<!--logs.wxml-->
-<navigation-bar navbarData="{{navbarData}}" />
-<alert-login showLogin="{{showLogin}}" bind:beforeLogin="beforeLogin"/>
-<view class="container log-list">
-  logs
-</view>

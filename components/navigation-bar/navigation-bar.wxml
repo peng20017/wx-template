@@ -1,14 +1,14 @@
 <view class='nav-wrap' style='color:{{navbarData.textColor}};background-color:{{navbarData.backgroundColor}}'>
     <view style='height:{{height}}px;'></view>
-    <block wx:if="{{navbarData.page=='index'}}">
+    <!-- <block wx:if="{{navbarData.type==1}}">
         <view class='point-wrap' style='height:40px;'>
             <text class='left_title' style='line-height:40px;'>{{navbarData.title}}</text>
         </view>
-    </block>
-    <block wx:else>
+    </block> -->
+    <block wx:if="{{navbarData.type==1}}">
         <view class='nav-content'>
             <view class='nav-title'>
-                <text>{{navbarData.title}}</text>
+                <text catchtap="{{navbarData.event}}" data-src="{{navbarData.src}}">{{navbarData.title}}</text>
             </view>
             <view style='display: flex; justify-content: space-around;flex-direction: column'>
                 <view class='nav-capsule' style='height: 40px;' >
